@@ -1,8 +1,5 @@
+'use client'
 import Image from "next/image";
-import Noticias from "./components/Noticias";
-import Votaciones from "./components/Votaciones";
-import Info from "./components/InformacionCOMUN";
-import Miembros from "./components/Miembros";
 
 export default function Home() {
   return (
@@ -16,16 +13,17 @@ export default function Home() {
         </h2>
       </header>
       <main className="px-6 sm:px-12 py-8 text-center back">
-      <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 bg-opacity-20 border">
-        <h2 className="text-3xl font-semibold text-yellow-500 mb-4 drop-shadow-md opacity-90">Hubo una vez...</h2>
-        <p className="text-lg sm:text-xl leading-relaxed text-gray-400 opacity-80">
-          Un hombre tan aburrido como para hacer una web a su clan... ese hombre se llamaba{" "}
-          <span className="text-yellow-500 font-bold">JAKER</span>. Admirarlo y darle reco cuando se lo encuentren.
-        </p>
-        <div>
-          de a poco voy a ir actualizando esto a
+        <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 bg-opacity-20 border">
+          <h2 className="text-3xl font-semibold text-yellow-500 mb-4 drop-shadow-md opacity-90">Hubo una vez...</h2>
+          <p className="text-lg sm:text-xl leading-relaxed text-gray-400 opacity-80">
+            Un hombre tan aburrido como para hacer una web a su clan... ese hombre se llamaba{" "}
+            <span className="text-yellow-500 font-bold">JAKER</span>. Admirarlo y darle reco cuando se lo encuentren.
+          </p>
         </div>
-      </div>
+        <h2>FOTOS DEL CLAN</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+          <Image src="/farsita.jpg" alt="farsita" width={400} height={400} className="z-999" />
+        </div>
       </main>
     </div>
   );
