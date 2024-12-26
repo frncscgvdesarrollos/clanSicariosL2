@@ -23,7 +23,7 @@ export default function Home() {
           <span className="text-yellow-500 font-bold">JAKER</span>. Admirarlo y darle reco cuando se lo encuentren.
         </p>
         <div>
-          de a poco voy a ir actualizando esto 
+          de a poco voy a ir actualizando esto a
         </div>
       </div>
       </main>
