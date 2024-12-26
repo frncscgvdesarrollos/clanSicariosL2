@@ -22,6 +22,9 @@ export default function Home() {
           Un hombre tan aburrido como para hacer una web a su clan... ese hombre se llamaba{" "}
           <span className="text-yellow-500 font-bold">JAKER</span>. Admirarlo y darle reco cuando se lo encuentren.
         </p>
+        <div>
+          de a poco voy a ir actualizando esto 
+        </div>
       </div>
       </main>
     </div>
