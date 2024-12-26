@@ -12,8 +12,8 @@ export default function Home() {
           <span className="text-pink-500">mujersuelas</span>. 😎
         </h2>
       </header>
-      <main className="px-6 sm:px-12 py-8 text-center back">
-        <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 bg-opacity-20 border">
+      <main className="px-6 sm:px-12 py-8 text-center">
+        <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 bg-opacity-20 back">
           <h2 className="text-3xl font-semibold text-yellow-500 mb-4 drop-shadow-md opacity-90">Hubo una vez...</h2>
           <p className="text-lg sm:text-xl leading-relaxed text-gray-400 opacity-80">
             Un hombre tan aburrido como para hacer una web a su clan... ese hombre se llamaba{" "}
@@ -23,7 +23,12 @@ export default function Home() {
         <h2>FOTOS DEL CLAN</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
           <Image src="/farsita.jpg" alt="farsita" width={400} height={400} className="z-999" />
+          <Image src="/soyunelfo.jpg" alt="farsita" width={400} height={400} className="z-999" />
         </div>
+        <h2>Miembros</h2>
+        <ul>
+          <li>JAKER - LIDER DE CLAN -</li>
+        </ul>
       </main>
     </div>
   );
