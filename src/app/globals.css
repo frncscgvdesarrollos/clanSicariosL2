@@ -19,3 +19,12 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.back{
+  background-image: url("../../public/Nueva\ imagen\ de\ mapa\ de\ bits\ \(2\).bmp");
+  background-repeat: no-repeat;
+  background-position: center ;
+  background-size: cover;
+  background-position-y: -200px;
+  height: 100vh;
+}
