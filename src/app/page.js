@@ -18,16 +18,17 @@ export default function RootPage() {
 
   if (user) {
     return (
-      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center">
-        <h1 className="text-4xl">Bienvenido, {user.displayName}</h1>
+      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center space-y-6 p-4">
+        <h1 className="text-5xl font-bold text-center">Bienvenido, {user.displayName}</h1>
+        <p className="text-lg text-center">Gracias por unirte a la causa. Ayúdanos a documentar los baneos injustos.</p>
         <button 
           onClick={handleLogout} 
-          className="mt-4 bg-red-500 p-3 rounded text-white">
+          className="mt-4 bg-red-600 hover:bg-red-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
           Logout
         </button>
         <button 
           onClick={() => router.push('/historias')} 
-          className="mt-4 bg-green-500 p-3 rounded text-white">
+          className="mt-4 bg-green-600 hover:bg-green-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
           Ir a Historias
         </button>
       </div>
@@ -35,14 +36,18 @@ export default function RootPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center">
-      <h1 className="text-4xl">Bienvenido a Baneados Injustamente</h1>
-      <h2 className="text-2xl">QUE NO QUEDE IMPUNE EL SERVER !!</h2>
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center space-y-6 p-4">
+      <h1 className="text-5xl font-bold text-center">Bienvenido a Baneados Injustamente</h1>
+      <h2 className="text-2xl text-center font-semibold">¡QUE NO QUEDE IMPUNE EL SERVER!</h2>
+      <p className="text-lg text-center">Aquí podrás documentar y compartir experiencias sobre baneos injustos. ¡Haz que tu voz se escuche!</p>
       <button 
         onClick={handleLogin} 
-        className="mt-4 bg-blue-500 p-3 rounded text-white">
+        className="mt-6 bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
         Login con Google
       </button>
+      <p className="text-center mt-4 text-sm text-gray-400">
+        ¿Ya tienes una cuenta? Inicia sesión para empezar a compartir tus historias.
+      </p>
     </div>
   );
 }
