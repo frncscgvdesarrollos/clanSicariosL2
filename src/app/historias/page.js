@@ -69,32 +69,77 @@ export default function Historias() {
         <h3 className="text-xl sm:text-2xl">¡Comparte tu historia!</h3>
       </div>
 
-      {/* Formulario para contar la historia */}
-      <form onSubmit={handleSubmit} className="mt-10 max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg space-y-4">
-        <input type="text" name="nombre" placeholder="Tu nombre" value={historia.nombre} onChange={handleChange} className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"/>
-        <input type="text" name="lvl" placeholder="Nivel de tu personaje" value={historia.lvl} onChange={handleChange} className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"/>
-        <input type="text" name="motivo" placeholder="Motivo del baneo" value={historia.motivo} onChange={handleChange} className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"/>
-        <textarea name="loQuePaso" placeholder="Lo que pasó realmente" value={historia.loQuePaso} onChange={handleChange} rows="4" className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"/>
-        <textarea name="historia" placeholder="Cuenta tu historia" value={historia.historia} onChange={handleChange} rows="6" className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"/>
-        <button type="submit" className="w-full bg-red-500 hover:bg-red-600 p-3 rounded text-white font-bold">Enviar Historia</button>
-      </form>
+      {/* Contenedor de las columnas */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-10">
+        {/* Formulario para contar la historia */}
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="nombre"
+              placeholder="Tu nombre"
+              value={historia.nombre}
+              onChange={handleChange}
+              className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"
+            />
+            <input
+              type="text"
+              name="lvl"
+              placeholder="Nivel de tu personaje"
+              value={historia.lvl}
+              onChange={handleChange}
+              className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"
+            />
+            <input
+              type="text"
+              name="motivo"
+              placeholder="Motivo del baneo"
+              value={historia.motivo}
+              onChange={handleChange}
+              className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"
+            />
+            <textarea
+              name="loQuePaso"
+              placeholder="Lo que pasó realmente"
+              value={historia.loQuePaso}
+              onChange={handleChange}
+              rows="4"
+              className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"
+            />
+            <textarea
+              name="historia"
+              placeholder="Cuenta tu historia"
+              value={historia.historia}
+              onChange={handleChange}
+              rows="6"
+              className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"
+            />
+            <button
+              type="submit"
+              className="w-full bg-red-500 hover:bg-red-600 p-3 rounded text-white font-bold"
+            >
+              Enviar Historia
+            </button>
+          </form>
+        </div>
 
-      {/* Lista de historias */}
-      <div className="mt-12 max-w-3xl mx-auto">
-        <h2 className="text-2xl font-bold text-center mb-4 text-white">📜 Historias Publicadas</h2>
-        <div className="space-y-6">
-          {historias.length === 0 ? (
-            <p className="text-center text-gray-400">No hay historias todavía. Sé el primero en compartir la tuya.</p>
-          ) : (
-            historias.map((hist) => (
-              <div key={hist.id} className="bg-gray-800 p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold text-red-500">{hist.nombre} (LVL {hist.lvl})</h3>
-                <p className="text-gray-400">🚨 <strong>Motivo del baneo:</strong> {hist.motivo}</p>
-                <p className="text-gray-300 mt-2">📖 <strong>Lo que pasó:</strong> {hist.loQuePaso}</p>
-                <p className="text-white mt-4">{hist.historia}</p>
-              </div>
-            ))
-          )}
+        {/* Lista de historias */}
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold text-center mb-4 text-white">📜 Historias Publicadas</h2>
+          <div className="space-y-6">
+            {historias.length === 0 ? (
+              <p className="text-center text-gray-400">No hay historias todavía. Sé el primero en compartir la tuya.</p>
+            ) : (
+              historias.map((hist) => (
+                <div key={hist.id} className="bg-gray-700 p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-bold text-red-500">{hist.nombre} (LVL {hist.lvl})</h3>
+                  <p className="text-gray-400">🚨 <strong>Motivo del baneo:</strong> {hist.motivo}</p>
+                  <p className="text-gray-300 mt-2">📖 <strong>Lo que pasó:</strong> {hist.loQuePaso}</p>
+                  <p className="text-white mt-4">{hist.historia}</p>
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>
