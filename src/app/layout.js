@@ -1,4 +1,5 @@
 import "./globals.css";
+import { AuthContextProvider } from "./context/AuthContext";
 
 export const metadata = {
   title: "Baneados INJUSTAMENTE",
