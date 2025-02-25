@@ -37,6 +37,7 @@ export default function RootPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center">
       <h1 className="text-4xl">Bienvenido a Baneados Injustamente</h1>
+      <h2 className="text-2xl">QUE NO QUEDE IMPUNE EL SERVER !!</h2>
       <button 
         onClick={handleLogin} 
         className="mt-4 bg-blue-500 p-3 rounded text-white">
