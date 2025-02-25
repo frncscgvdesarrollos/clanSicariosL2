@@ -1,6 +1,6 @@
 'use client';
 
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "./context/AuthContext";
 import { useRouter } from "next/navigation";
 
 export default function RootPage() {
