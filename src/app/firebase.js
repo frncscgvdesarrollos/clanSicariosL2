@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -11,40 +12,44 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Inicializar Firebase
+// Verifica si Firebase ya está inicializado
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-/**
- * Agrega una historia a Firestore.
- * @param {Object} historia - Datos de la historia (nombre, lvl, motivo, detalles).
- * @param {string} userId - ID del usuario que la envió.
- */
+// Función para agregar una historia a Firestore
 export async function addHistoria(historia, userId) {
+  if (!userId) {
+    console.error("Error: userId es indefinido. No se puede agregar la historia.");
+    return;
+  }
+
   try {
     const docRef = await addDoc(collection(db, "historias"), {
       ...historia,
       userId,
-      timestamp: new Date(),
+      timestamp: serverTimestamp(), // Usa timestamp de Firestore
     });
     console.log("Historia agregada con ID:", docRef.id);
   } catch (error) {
-    console.error("Error al agregar historia:", error);
+    console.error("Error al agregar historia:", error.message);
   }
 }
 
-/**
- * Obtiene todas las historias de Firestore.
- * @returns {Promise<Array>} - Lista de historias.
- */
+// Función para obtener todas las historias de Firestore
 export async function getHistorias() {
   try {
     const querySnapshot = await getDocs(collection(db, "historias"));
     return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   } catch (error) {
-    console.error("Error al obtener historias:", error);
+    console.error("Error al obtener historias:", error.message);
     return [];
   }
 }
 
-export { db };
+// Función para escuchar el estado de autenticación del usuario
+export function onAuthStateChangedListener(callback) {
+  return onAuthStateChanged(auth, callback);
+}
+
+export { db, auth };
