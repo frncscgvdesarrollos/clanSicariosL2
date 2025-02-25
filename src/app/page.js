@@ -37,9 +37,7 @@ export default function RootPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center space-y-6 p-4">
-      <h1 className="text-5xl font-bold text-center">Bienvenido a BANEADOSREBORN</h1>
-      <h2 className="text-2xl text-center font-semibold">¡QUE NO QUEDE IMPUNE EL SERVER!</h2>
-      <p className="text-lg text-center">Aquí podrás documentar y compartir experiencias sobre baneos injustos. ¡Haz que tu voz se escuche!</p>
+      <h1 className="text-5xl font-bold text-center">Bienvenido a baneados injustamente</h1>
       <button 
         onClick={handleLogin} 
         className="mt-6 bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
