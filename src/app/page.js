@@ -37,6 +37,7 @@ export default function RootPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center space-y-6 p-4">
+      <span> la pagina esta en desarrollo </span>
       <h1 className="text-5xl font-bold text-center">BADBAN L2.</h1>
       <span className="text-lg text-center">Recuerda que siempre pueden cometer errores los master del juego y que siempre debes tratar de hablar por las vias que te proporcionan, <br/> sin embargo muchas veces es injusto realmente.</span>
       <button 
