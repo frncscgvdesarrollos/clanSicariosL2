@@ -1,5 +1,6 @@
 import "./globals.css";
 import { AuthContextProvider } from "./context/AuthContext";
+import Header from "./components/header";
 
 export const metadata = {
   title: "Baneados INJUSTAMENTE",
@@ -15,6 +16,7 @@ export default function RootLayout({ children  }) {
       </head>
       <body className='bg-gray-800 flex flex-col'>
         <AuthContextProvider>
+        <Header />
                 {children}
         </AuthContextProvider>
       </body>
