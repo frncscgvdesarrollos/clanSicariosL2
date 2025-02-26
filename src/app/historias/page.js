@@ -1,5 +1,5 @@
-import { incrementarVistosMalos } from "../firebase"; // Asegúrate de importar la función
-import { UserAuth } from '../context/AuthContext'; // Asegúrate de que la ruta es correcta
+import { useState, useEffect } from 'react';
+import { incrementarMeGusta } from '../firebase'; // Importa la función
 
 export default function Historias() {
   const { user } = UserAuth();
@@ -16,11 +16,7 @@ export default function Historias() {
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "historias"), (snapshot) => {
       const historiasData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      
-      // Filtrar las historias con más de 4 vistos malos
-      const historiasFiltradas = historiasData.filter(historia => historia.vistosMalos < 4);
-      
-      setHistorias(historiasFiltradas);
+      setHistorias(historiasData);
     });
 
     return () => unsubscribe();
@@ -119,12 +115,15 @@ export default function Historias() {
                     <p className="text-gray-400">🚨 <strong>Motivo del baneo:</strong> {hist.motivo}</p>
                     <p className="text-gray-300 mt-2">📖 <strong>Lo que pasó:</strong> {hist.loQuePaso}</p>
                     <p className="text-gray-300 mt-2">👤 <strong>Usuario:</strong> {hist.nombreUsuario}</p>
-                    <button
-                      className="mt-4 bg-red-500 p-2 rounded text-white"
-                      onClick={() => incrementarVistosMalos(hist.id)}
-                    >
-                      ¡No me gusta este comentario!
-                    </button>
+                    <div className="flex items-center mt-4">
+                      <p className="text-gray-300 mr-2">👍 {hist.meGusta || 0} Me gusta</p>
+                      <button
+                        className="bg-blue-500 p-2 rounded text-white"
+                        onClick={() => incrementarMeGusta(hist.id)}
+                      >
+                        ¡Me gusta!
+                      </button>
+                    </div>
                   </div>
                 )
               ))

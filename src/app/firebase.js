@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp,doc, updateDoc, increment  } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Configuración de Firebase
@@ -68,6 +68,16 @@ export async function incrementarVistosMalos(historiaId, comentarioId) {
     console.error("Error al incrementar vistosMalos:", error.message);
   }
 }
+export const incrementarMeGusta = async (historiaId) => {
+  try {
+    const historiaRef = doc(db, "historias", historiaId);
+    await updateDoc(historiaRef, {
+      meGusta: increment(1) // Incrementa el contador de "me gusta" en 1
+    });
+  } catch (error) {
+    console.error("Error al incrementar el 'me gusta':", error);
+  }
+};
 
 // Función para obtener todas las historias de Firestore
 export async function getHistorias() {
