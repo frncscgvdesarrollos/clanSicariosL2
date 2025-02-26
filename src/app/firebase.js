@@ -6,12 +6,12 @@ import {
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyDstVP7WRavVPaYopzzq0OLd7wLE5trYAs",
+  authDomain: "noticias-2e544.firebaseapp.com",
+  projectId: "noticias-2e544",
+  storageBucket: "noticias-2e544.firebasestorage.app",
+  messagingSenderId: "770532361851",
+  appId: "1:770532361851:web:5b52192872d8f511a084de"
 };
 
 const app = initializeApp(firebaseConfig);
