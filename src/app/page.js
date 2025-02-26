@@ -20,7 +20,7 @@ export default function RootPage() {
     <div className="relative min-h-screen flex items-center justify-center bg-black">
       {/* Imagen de fondo */}
       <div className="absolute inset-0 bg-cover bg-center brightness-75" 
-        style={{ backgroundImage: "url('/designer.jpg')" }} 
+        style={{ backgroundImage: "url('/Designer.png')" }} 
       ></div>
 
       {/* Contenedor con efecto de vidrio */}
