@@ -47,7 +47,7 @@ export default function MisHistorias() {
           ))}
         </ul>
       ) : (
-        <p>No tienes historias todavía.</p>
+        <p>No tienes historias todavíaa.</p>
       )}
     </div>
   );
