@@ -34,7 +34,20 @@ export async function addHistoria(historia, userId) {
     console.error("Error al agregar historia:", error.message);  
   }  
 }
-
+// Función para obtener las historias del usuario autenticado
+export async function getHistorias(userId) {
+  try {
+    const q = query(
+      collection(db, "historias"),
+      where("usuarioId", "==", userId) // Filtra solo las historias del usuario autenticado
+    );
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  } catch (error) {
+    console.error("Error al obtener historias:", error.message);
+    return [];
+  }
+}
 
 
 // Función para incrementar el contador de clics en un comentario

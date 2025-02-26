@@ -7,6 +7,7 @@ const Header = () => {
         <Link href="/" className="text-xl font-bold">Inicio</Link>
         <div className="space-x-4">
           <Link href="/historias" className="hover:text-yellow-400">Historias</Link>
+          <Link href="/mishistorias" className="hover:text-yellow-400">Mis Historias</Link> {/* Nueva ruta agregada */}
           <Link href="/reglas" className="hover:text-yellow-400">Reglas</Link>
           <Link href="/about" className="hover:text-yellow-400">About</Link>
         </div>
