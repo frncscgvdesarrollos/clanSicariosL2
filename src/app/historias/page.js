@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { incrementarMeGusta } from '../firebase'; // Importa la función
+import { incrementarMeGusta, incrementarMalvisto } from '../firebase'; // Importa las nuevas funciones
 
 export default function Historias() {
   const { user } = UserAuth();
@@ -122,6 +122,14 @@ export default function Historias() {
                         onClick={() => incrementarMeGusta(hist.id)}
                       >
                         ¡Me gusta!
+                      </button>
+
+                      <p className="text-gray-300 ml-4 mr-2">👎 {hist.malvisto || 0} Mal visto</p>
+                      <button
+                        className="bg-red-500 p-2 rounded text-white"
+                        onClick={() => incrementarMalvisto(hist.id)}
+                      >
+                        ¡Mal visto!
                       </button>
                     </div>
                   </div>
