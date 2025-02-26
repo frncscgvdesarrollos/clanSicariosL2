@@ -1,16 +1,9 @@
-'use client';
-
-import { useEffect, useState } from "react";
-import { UserAuth } from "../context/AuthContext";
-import { useRouter } from "next/navigation";
-import { addHistoria, getHistorias } from "../firebase"; // Importamos funciones de Firebase
-import { onSnapshot, collection } from "firebase/firestore";
-import { db } from "../firebase";
+import { incrementarVistosMalos } from "../firebase"; // Asegúrate de importar la función
 
 export default function Historias() {
   const { user } = UserAuth();
   const [historia, setHistoria] = useState({
-    nombreUsuario: '',  // Nuevo campo para el nombre del usuario
+    nombreUsuario: '',
     motivo: '',
     loQuePaso: ''
   });
@@ -22,7 +15,11 @@ export default function Historias() {
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "historias"), (snapshot) => {
       const historiasData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setHistorias(historiasData);
+      
+      // Filtrar las historias con más de 4 vistos malos
+      const historiasFiltradas = historiasData.filter(historia => historia.vistosMalos < 4);
+      
+      setHistorias(historiasFiltradas);
     });
 
     return () => unsubscribe();
@@ -116,11 +113,19 @@ export default function Historias() {
               <p className="text-center text-gray-400">No hay historias todavía. Sé el primero en compartir la tuya.</p>
             ) : (
               historias.map((hist) => (
-                <div key={hist.id} className="bg-gray-700 p-6 rounded-lg shadow-md">
-                  <p className="text-gray-400">🚨 <strong>Motivo del baneo:</strong> {hist.motivo}</p>
-                  <p className="text-gray-300 mt-2">📖 <strong>Lo que pasó:</strong> {hist.loQuePaso}</p>
-                  <p className="text-gray-300 mt-2">👤 <strong>Usuario:</strong> {hist.nombreUsuario}</p>
-                </div>
+                !hist.oculto && (  // Solo mostrar historias no ocultas
+                  <div key={hist.id} className="bg-gray-700 p-6 rounded-lg shadow-md">
+                    <p className="text-gray-400">🚨 <strong>Motivo del baneo:</strong> {hist.motivo}</p>
+                    <p className="text-gray-300 mt-2">📖 <strong>Lo que pasó:</strong> {hist.loQuePaso}</p>
+                    <p className="text-gray-300 mt-2">👤 <strong>Usuario:</strong> {hist.nombreUsuario}</p>
+                    <button
+                      className="mt-4 bg-red-500 p-2 rounded text-white"
+                      onClick={() => incrementarVistosMalos(hist.id)}
+                    >
+                      ¡No me gusta este comentario!
+                    </button>
+                  </div>
+                )
               ))
             )}
           </div>
@@ -129,4 +134,3 @@ export default function Historias() {
     </div>
   );
 }
-

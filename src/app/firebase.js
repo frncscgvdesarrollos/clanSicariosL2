@@ -29,10 +29,43 @@ export async function addHistoria(historia, userId) {
       ...historia,
       userId,
       timestamp: serverTimestamp(), // Usa timestamp de Firestore
+      comentarios: [], // Suponiendo que cada historia tendrá comentarios vacíos al principio
     });
     console.log("Historia agregada con ID:", docRef.id);
   } catch (error) {
     console.error("Error al agregar historia:", error.message);
+  }
+}
+
+// Función para incrementar el contador de clics en un comentario
+export async function incrementarVistosMalos(historiaId, comentarioId) {
+  try {
+    const historiaRef = doc(db, "historias", historiaId);
+    const historiaDoc = await getDoc(historiaRef);
+
+    if (historiaDoc.exists()) {
+      const comentarios = historiaDoc.data().comentarios;
+      const comentario = comentarios.find(c => c.id === comentarioId);
+
+      if (comentario) {
+        // Incrementa el contador de 'vistosMalos'
+        comentario.vistosMalos = (comentario.vistosMalos || 0) + 1;
+
+        // Si los clics son mayores a 4, no mostrar el comentario
+        if (comentario.vistosMalos > 4) {
+          comentario.oculto = true; // Agrega la propiedad 'oculto' para no mostrarlo
+        }
+
+        // Actualiza el comentario en Firestore
+        await updateDoc(historiaRef, {
+          comentarios: comentarios.map(c => c.id === comentarioId ? comentario : c)
+        });
+      }
+    } else {
+      console.log("No se encontró la historia.");
+    }
+  } catch (error) {
+    console.error("Error al incrementar vistosMalos:", error.message);
   }
 }
 
