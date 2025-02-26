@@ -17,24 +17,24 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-export async function addHistoria(historia, userId) {
-  if (!userId) {
-    console.error("Error: userId es indefinido. No se puede agregar la historia.");
-    return;
-  }
+export async function addHistoria(historia, userId) {  
+  if (!userId) {  
+    console.error("Error: userId es indefinido. No se puede agregar la historia.");  
+    return;  
+  }  
 
-  try {
-    const docRef = await addDoc(collection(db, "historias"), {
-      ...historia,
-      usuarioId: userId,  // 🔥 Asegurar que usuarioId esté presente
-      timestamp: serverTimestamp(),
-      comentarios: []
-    });
-    console.log("Historia agregada con ID:", docRef.id);
-  } catch (error) {
-    console.error("Error al agregar historia:", error.message);
-  }
+  try {  
+    const docRef = await addDoc(collection(db, "historias"), {  
+      ...historia,  
+      usuarioId: userId,  // 🔥 Asegurar que usuarioId esté presente  
+      timestamp: serverTimestamp(),  
+    });  
+    console.log("Historia agregada con ID:", docRef.id);  
+  } catch (error) {  
+    console.error("Error al agregar historia:", error.message);  
+  }  
 }
+
 
 
 // Función para incrementar el contador de clics en un comentario
