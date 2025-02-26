@@ -17,17 +17,20 @@ export default function RootPage() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-black">
-      {/* Imagen de fondo */}
-      <div className="absolute inset-0 bg-cover bg-center brightness-75" 
-        style={{ backgroundImage: "url('/Designer.png')" }} 
-      ></div>
+    <div className="flex justify-center items-center min-h-screen">
 
-      {/* Contenedor con efecto de vidrio */}
-      <div className="relative bg-white bg-opacity-10 backdrop-blur-lg shadow-lg rounded-2xl p-8 max-w-lg w-full text-center border border-white/20">
+      {/* Div con fondo de la parca y la información */}
+      <div 
+        className="flex-1 min-h-screen bg-cover bg-no-repeat bg-center bg-opacity-50 p-8 text-white"
+        style={{ backgroundImage: "url('/parca.png')", backgroundSize: 'cover' }}>
+      </div>
+
+
+      {/* Div con el login y fondo gris oscuro */}
+      <div className="w-full max-w-md p-8 bg-gray-900 bg-opacity-90 text-center rounded-lg shadow-lg">
         <h1 className="text-4xl font-bold text-white">BADBAN L2</h1>
         <p className="text-white text-opacity-80 mt-4">
-          Recuerda que los administradores pueden cometer errores, pero siempre intenta resolverlo por los medios oficiales.
+          Recuerda que los administradores pueden cometer errores y que siempre debes intentar resolver el problema por los medios oficiales.
         </p>
 
         {user ? (
@@ -54,7 +57,8 @@ export default function RootPage() {
         ) : (
           <>
             <p className="text-white text-opacity-80 mt-6">
-              Si crees que fuiste baneado de forma injusta, ayuda a documentar estos casos.
+              Si crees que fuiste baneado de forma injusta, ayuda a documentar estos casos.<br/>
+              Y que esta pagina sirva para quienes esten buscando server sepan donde no tirar su tiempo!
             </p>
             <button 
               onClick={handleLogin}
@@ -64,6 +68,7 @@ export default function RootPage() {
           </>
         )}
       </div>
+
     </div>
   );
 }
