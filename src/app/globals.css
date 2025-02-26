@@ -16,7 +16,10 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: url("public/desinger.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: Arial, Helvetica, sans-serif;
 }
 
