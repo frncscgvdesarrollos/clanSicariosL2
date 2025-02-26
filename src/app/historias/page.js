@@ -76,7 +76,7 @@ export default function Historias() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8 sm:p-20">
+    <div className="min-h-screen fondo text-white p-8 sm:p-20">
       <div className="max-w-3xl mx-auto text-center space-y-6">
         <h1 className="text-3xl sm:text-5xl font-bold text-red-500">🚨 BANEADOS INJUSTAMENTE 🚨</h1>
         <h3 className="text-xl sm:text-2xl">¡Comparte tu historia de forma anónima!</h3>
