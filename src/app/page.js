@@ -37,7 +37,8 @@ export default function RootPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center space-y-6 p-4">
-      <h1 className="text-5xl font-bold text-center">Bienvenido a baneados injustamente</h1>
+      <h1 className="text-5xl font-bold text-center">Bienvenido a baneados injustamente del l2.</h1>
+      <span className="text-lg text-center">Recuerda que siempre pueden cometer errores los master del juego y que siempre debes tratar de hablar por las vias que te proporcionan, <br/> sin embargo muchas es injusto realmente.</span>
       <button 
         onClick={handleLogin} 
         className="mt-6 bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
