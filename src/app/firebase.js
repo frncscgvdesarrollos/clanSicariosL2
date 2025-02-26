@@ -106,7 +106,7 @@ export const incrementarMalvisto = async (historiaId, userId) => {
 
 export const obtenerHistorias = async (uid) => {
   try {
-    const q = query(collection(db, "historias"), where("userId", "==", uid));
+    const q = query(collection(db, "historias"), where("usuarioId", "==", uid));  // Cambié "userId" por "usuarioId"
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   } catch (error) {
