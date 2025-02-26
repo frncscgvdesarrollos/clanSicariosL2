@@ -37,7 +37,6 @@ export default function RootPage() {
 
   return (
     <div className="min-h-screen  fondo text-white flex flex-col items-center justify-center space-y-6 p-4">
-{/* Suggested code may be subject to a license. Learn more: ~LicenseLog:1853297041. */}
       <div className="bg-gray-600 bg-opacity-80 rounded-lg flex flex-col items-center justify-center space-y-6 p-4">
       <span> la pagina esta en desarrollo </span>
       <h1 className="text-5xl font-bold text-center">BADBAN L2.</h1>
@@ -47,11 +46,7 @@ export default function RootPage() {
         className="mt-6 bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
         Login con Google
       </button>
-
       </div>
-
-
-      
     </div>
   );
 }

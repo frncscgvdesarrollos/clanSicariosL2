@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body className="bg-gray-900 flex flex-col">
+      <body className="w-full h-screen bg-gray-900 text-white">
         <AuthContextProvider>
           <Header />
           <main>{children}</main>

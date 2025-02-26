@@ -14,18 +14,25 @@
   }
 }
 body {
-  
+
   background-size: cover;  /* Asegura que la imagen cubra toda la pantalla */
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   color: #ededed; /* Cambia el color del texto para que sea visible sobre el fondo */
 }
 .fondo{
-    background-image: url('/Designer.png'); /* Ruta de la imagen */
-    background-size: contain;  /* Asegura que la imagen cubra toda la pantalla */
+    background-image: url('/parca.png'); /* Ruta de la imagen */
+    background-size: cover;  /* Asegura que la imagen cubra toda la pantalla */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     color: #ededed; /* Cambia el color del texto para que sea visible sobre el fondo */
+}
+.fondo2{
+  background-image: url('/LAPARCA.jpeg'); /* Ruta de la imagen */
+  background-size: cover;  /* Asegura que la imagen cubra toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  color: #ededed; /* Cambia el color del texto para que sea visible sobre el fondo */
 
 }
 /* .back{
@@ -34,4 +41,88 @@ body {
   background-position: center ;
   background-size: cover;
   height: 100vh;
-} */
+} *//* Añadir una transición suave a los botones */
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efectos en los botones de "Me gusta" y "Mal visto" */
+.button-like,
+.button-dislike {
+  transition: transform 0.2s, background-color 0.3s ease;
+}
+.button-like:hover,
+.button-dislike:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo para el fondo con un gradiente */
+.fondo {
+  background: linear-gradient(135deg, rgba(255, 0, 150, 0.1), rgba(0, 204, 255, 0.1));
+  background-size: 400% 400%;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+
+
+/* Animación de gradiente de fondo */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Diseño de las historias con sombras sutiles y bordes redondeados */
+.bg-gray-700 {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tarjetas de historias con animación al aparecer */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto para las tarjetas de las historias */
+.bg-gray-800 {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Mejorar el diseño del formulario */
+input, textarea {
+  background-color: #1e1e1e;
+  border: 2px solid #333;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff5c8e; /* Un color que contraste */
+  outline: none;
+}
+
+/* Estilo para los botones de enviar historia */
+.bg-red-500 {
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+.bg-red-500:hover {
+  transform: scale(1.05);
+  background-color: #f05d5d;
+}
