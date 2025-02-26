@@ -16,36 +16,53 @@ export default function RootPage() {
     router.push('/'); // Redirige después de hacer logout
   };
 
-  if (user) {
-    return (
-      <div className="min-h-screen fondo text-white flex flex-col items-center justify-center space-y-6 p-4">
-        <h1 className="text-5xl font-bold text-center">Bienvenido, {user.displayName}</h1>
-        <p className="text-lg text-center">Gracias por unirte a la causa. Ayúdanos a documentar los baneos injustos.</p>
-        <button 
-          onClick={handleLogout} 
-          className="mt-4 bg-red-600 hover:bg-red-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
-          Logout
-        </button>
-        <button 
-          onClick={() => router.push('/historias')} 
-          className="mt-4 bg-green-600 hover:bg-green-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
-          Ir a Historias
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen  fondo text-white flex flex-col items-center justify-center space-y-6 p-4">
-      <div className="bg-gray-600 bg-opacity-80 rounded-lg flex flex-col items-center justify-center space-y-6 p-4">
-      <span> la pagina esta en desarrollo </span>
-      <h1 className="text-5xl font-bold text-center">BADBAN L2.</h1>
-      <span className="text-lg text-center color-gray-900">Recuerda que siempre pueden cometer errores los master del juego y que siempre debes tratar de hablar por las vias que te proporcionan, <br/> sin embargo muchas veces es injusto realmente.</span>
-      <button 
-        onClick={handleLogin} 
-        className="mt-6 bg-blue-600 hover:bg-blue-700 p-4 rounded-lg text-white font-semibold text-xl w-full max-w-xs">
-        Login con Google
-      </button>
+    <div className="relative min-h-screen flex items-center justify-center bg-black">
+      {/* Imagen de fondo */}
+      <div className="absolute inset-0 bg-cover bg-center brightness-75" 
+        style={{ backgroundImage: "url('/designer.jpg')" }} 
+      ></div>
+
+      {/* Contenedor con efecto de vidrio */}
+      <div className="relative bg-white bg-opacity-10 backdrop-blur-lg shadow-lg rounded-2xl p-8 max-w-lg w-full text-center border border-white/20">
+        <h1 className="text-4xl font-bold text-white">BADBAN L2</h1>
+        <p className="text-white text-opacity-80 mt-4">
+          Recuerda que los administradores pueden cometer errores, pero siempre intenta resolverlo por los medios oficiales.
+        </p>
+
+        {user ? (
+          <>
+            <h2 className="text-2xl font-semibold text-white mt-6">
+              Bienvenido, {user.displayName}
+            </h2>
+            <p className="text-white text-opacity-80">
+              Gracias por unirte a la causa. Ayúdanos a documentar los baneos injustos.
+            </p>
+            <div className="mt-6 space-y-4">
+              <button 
+                onClick={() => router.push('/historias')}
+                className="w-full bg-green-500 hover:bg-green-600 transition-all p-3 rounded-lg text-white font-medium text-lg shadow-md">
+                Ir a Historias
+              </button>
+              <button 
+                onClick={handleLogout}
+                className="w-full bg-red-500 hover:bg-red-600 transition-all p-3 rounded-lg text-white font-medium text-lg shadow-md">
+                Logout
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="text-white text-opacity-80 mt-6">
+              Si crees que fuiste baneado de forma injusta, ayuda a documentar estos casos.
+            </p>
+            <button 
+              onClick={handleLogin}
+              className="mt-6 w-full bg-blue-500 hover:bg-blue-600 transition-all p-3 rounded-lg text-white font-medium text-lg shadow-md">
+              Login con Google
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
