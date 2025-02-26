@@ -17,7 +17,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// Función para agregar una historia a Firestore
 export async function addHistoria(historia, userId) {
   if (!userId) {
     console.error("Error: userId es indefinido. No se puede agregar la historia.");
@@ -27,15 +26,16 @@ export async function addHistoria(historia, userId) {
   try {
     const docRef = await addDoc(collection(db, "historias"), {
       ...historia,
-      userId,
-      timestamp: serverTimestamp(), // Usa timestamp de Firestore
-      comentarios: [], // Suponiendo que cada historia tendrá comentarios vacíos al principio
+      usuarioId: userId,  // 🔥 Asegurar que usuarioId esté presente
+      timestamp: serverTimestamp(),
+      comentarios: []
     });
     console.log("Historia agregada con ID:", docRef.id);
   } catch (error) {
     console.error("Error al agregar historia:", error.message);
   }
 }
+
 
 // Función para incrementar el contador de clics en un comentario
 export const incrementarMalvisto = async (historiaId) => {
