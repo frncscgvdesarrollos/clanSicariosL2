@@ -38,36 +38,19 @@ export async function addHistoria(historia, userId) {
 }
 
 // Función para incrementar el contador de clics en un comentario
-export async function incrementarVistosMalos(historiaId, comentarioId) {
+export const incrementarMalvisto = async (historiaId) => {
   try {
-    const historiaRef = doc(db, "historias", historiaId);
-    const historiaDoc = await getDoc(historiaRef);
+    const historiaRef = doc(db, 'historias', historiaId);
 
-    if (historiaDoc.exists()) {
-      const comentarios = historiaDoc.data().comentarios;
-      const comentario = comentarios.find(c => c.id === comentarioId);
+    await updateDoc(historiaRef, {
+      malvisto: increment(1), // Incrementa el valor de 'malvisto' en 1
+    });
 
-      if (comentario) {
-        // Incrementa el contador de 'vistosMalos'
-        comentario.vistosMalos = (comentario.vistosMalos || 0) + 1;
-
-        // Si los clics son mayores a 4, no mostrar el comentario
-        if (comentario.vistosMalos > 4) {
-          comentario.oculto = true; // Agrega la propiedad 'oculto' para no mostrarlo
-        }
-
-        // Actualiza el comentario en Firestore
-        await updateDoc(historiaRef, {
-          comentarios: comentarios.map(c => c.id === comentarioId ? comentario : c)
-        });
-      }
-    } else {
-      console.log("No se encontró la historia.");
-    }
+    console.log('Malvisto incrementado correctamente.');
   } catch (error) {
-    console.error("Error al incrementar vistosMalos:", error.message);
+    console.error('Error al incrementar malvisto:', error);
   }
-}
+};
 export const incrementarMeGusta = async (historiaId) => {
   try {
     const historiaRef = doc(db, "historias", historiaId);
