@@ -1,6 +1,7 @@
 'use client'; 
 import { useState, useEffect } from 'react';
 import { incrementarMeGusta, incrementarMalvisto } from '../firebase'; // Importa las nuevas funciones
+import { UserAuth } from '../context/AuthContext';
 
 export default function Historias() {
   const { user } = UserAuth();
