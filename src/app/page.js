@@ -17,25 +17,24 @@ export default function RootPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex flex-col sm:flex-row justify-center items-center min-h-screen">
 
-      {/* Div con fondo de la parca y la información */}
+      {/* Div con fondo de la parca */}
       <div 
-        className="flex-1 min-h-screen bg-cover bg-no-repeat bg-center bg-opacity-50 p-8 text-white"
+        className="w-full sm:flex-1 h-64 sm:min-h-screen bg-cover bg-no-repeat bg-center"
         style={{ backgroundImage: "url('/parca.png')", backgroundSize: 'cover' }}>
       </div>
 
-
-      {/* Div con el login y fondo gris oscuro */}
-      <div className="w-full max-w-md p-8 bg-gray-900 bg-opacity-90 text-center rounded-lg shadow-lg">
-        <h1 className="text-4xl font-bold text-white">BADBAN L2</h1>
-        <p className="text-white text-opacity-80 mt-4">
+      {/* Contenedor del login */}
+      <div className="w-full max-w-md px-6 py-8 bg-gray-900 bg-opacity-90 text-center rounded-lg shadow-lg">
+        <h1 className="text-2xl sm:text-4xl font-bold text-white">BADBAN L2</h1>
+        <p className="text-white text-opacity-80 mt-4 sm:mt-6">
           Recuerda que los administradores pueden cometer errores y que siempre debes intentar resolver el problema por los medios oficiales.
         </p>
 
         {user ? (
           <>
-            <h2 className="text-2xl font-semibold text-white mt-6">
+            <h2 className="text-xl sm:text-2xl font-semibold text-white mt-6">
               Bienvenido, {user.displayName}
             </h2>
             <p className="text-white text-opacity-80">
@@ -56,9 +55,9 @@ export default function RootPage() {
           </>
         ) : (
           <>
-            <p className="text-white text-opacity-80 mt-6">
+            <p className="text-white text-opacity-80 mt-4 sm:mt-6">
               Si crees que fuiste baneado de forma injusta, ayuda a documentar estos casos.<br/>
-              Y que esta pagina sirva para quienes esten buscando server sepan donde no tirar su tiempo!
+              Y que esta página sirva para quienes estén buscando server sepan donde no tirar su tiempo.
             </p>
             <button 
               onClick={handleLogin}
