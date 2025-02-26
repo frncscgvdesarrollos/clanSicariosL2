@@ -21,9 +21,10 @@ export default function RootPage() {
 
       {/* Div con fondo de la parca */}
       <div 
-        className="w-full sm:flex-1 h-64 sm:min-h-screen bg-cover bg-no-repeat bg-center"
-        style={{ backgroundImage: "url('/parca.png')", backgroundSize: 'cover' }}>
-      </div>
+  className="w-full h-64 sm:min-h-screen bg-no-repeat bg-center sm:bg-cover"
+  style={{ backgroundImage: "url('/parca.png')", backgroundSize: 'contain' }}>
+</div>
+
 
       {/* Contenedor del login */}
       <div className="w-full max-w-md px-6 py-8 bg-gray-900 bg-opacity-90 text-center rounded-lg shadow-lg">
