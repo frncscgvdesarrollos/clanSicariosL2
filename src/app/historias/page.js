@@ -1,3 +1,4 @@
+'use client'; 
 import { useState, useEffect } from 'react';
 import { incrementarMeGusta, incrementarMalvisto } from '../firebase'; // Importa las nuevas funciones
 
