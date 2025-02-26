@@ -1,27 +1,24 @@
 'use client'; 
 import { useState, useEffect } from 'react';
-import { incrementarMeGusta, incrementarMalvisto } from '../firebase'; // Importa las nuevas funciones
+import { useRouter } from 'next/router';
+import { onSnapshot, collection } from 'firebase/firestore';
 import { UserAuth } from '../context/AuthContext';
+import { incrementarMeGusta, incrementarMalvisto, addHistoria, db } from '../firebase'; // Asegúrate de importar todas las funciones necesarias
 
 export default function Historias() {
-  const { user } = UserAuth();
-  const [historia, setHistoria] = useState({
-    nombreUsuario: '',
-    motivo: '',
-    loQuePaso: ''
-  });
-
+  const { user } = UserAuth(); // Obtén el usuario autenticado
+  const [historia, setHistoria] = useState({ nombreUsuario: '', motivo: '', loQuePaso: '' });
   const [historias, setHistorias] = useState([]);
-  const router = useRouter();
+  const router = useRouter(); // Utiliza useRouter si es necesario para redireccionar
 
-  // Obtener historias en tiempo real
+  // Obtener las historias en tiempo real desde Firebase
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "historias"), (snapshot) => {
       const historiasData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setHistorias(historiasData);
     });
 
-    return () => unsubscribe();
+    return () => unsubscribe(); // Limpia la suscripción cuando el componente se desmonte
   }, []);
 
   // Maneja el cambio en los campos del formulario
@@ -38,16 +35,17 @@ export default function Historias() {
     e.preventDefault();
     if (historia.motivo && historia.loQuePaso && historia.nombreUsuario) {
       try {
-        await addHistoria(historia, user.uid);
-        setHistoria({ motivo: '', loQuePaso: '', nombreUsuario: '' }); // Limpiar el formulario
+        await addHistoria(historia, user.uid); // Envía la historia al servidor
+        setHistoria({ motivo: '', loQuePaso: '', nombreUsuario: '' }); // Limpia el formulario después de enviarlo
       } catch (error) {
-        console.error("Error al guardar la historia:", error);
+        console.error("Error al guardar la historia:", error); // Manejo de errores
       }
     } else {
       alert("Por favor completa todos los campos.");
     }
   };
 
+  // Si no hay usuario autenticado, muestra un mensaje para que inicie sesión
   if (!user) {
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
