@@ -4,6 +4,7 @@ const Header = () => {
   return (
     <header className="bg-gray-800 text-white p-4">
       <nav className="flex justify-between">
+        <img src="/Designer.png" alt="Logo" className="h-10" />
         <Link href="/" className="text-xl font-bold">Inicio</Link>
         <div className="space-x-4">
           <Link href="/historias" className="hover:text-yellow-400">Historias</Link>

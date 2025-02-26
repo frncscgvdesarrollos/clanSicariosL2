@@ -15,7 +15,7 @@
 }
 body {
   color: var(--foreground);
-  background: url("/designer.png"); /* La ruta ahora es correcta */
+  background: url("/Designer.png"); /* La ruta ahora es correcta */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
