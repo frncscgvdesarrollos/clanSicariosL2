@@ -1,4 +1,5 @@
 import { incrementarVistosMalos } from "../firebase"; // Asegúrate de importar la función
+import { UserAuth } from '../context/AuthContext'; // Asegúrate de que la ruta es correcta
 
 export default function Historias() {
   const { user } = UserAuth();
