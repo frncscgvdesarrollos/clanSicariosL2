@@ -10,6 +10,7 @@ import { db } from "../firebase";
 export default function Historias() {
   const { user } = UserAuth();
   const [historia, setHistoria] = useState({
+    nombreUsuario: '',  // Nuevo campo para el nombre del usuario
     motivo: '',
     loQuePaso: ''
   });
@@ -39,10 +40,10 @@ export default function Historias() {
   // Función para enviar la historia a Firebase
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (historia.motivo && historia.loQuePaso) {
+    if (historia.motivo && historia.loQuePaso && historia.nombreUsuario) {
       try {
         await addHistoria(historia, user.uid);
-        setHistoria({ motivo: '', loQuePaso: '' }); // Limpiar el formulario
+        setHistoria({ motivo: '', loQuePaso: '', nombreUsuario: '' }); // Limpiar el formulario
       } catch (error) {
         console.error("Error al guardar la historia:", error);
       }
@@ -72,6 +73,14 @@ export default function Historias() {
         {/* Formulario para contar la historia */}
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="nombreUsuario"
+              value={historia.nombreUsuario}
+              onChange={handleChange}
+              placeholder="Tu nombre de usuario"
+              className="w-full p-3 bg-gray-700 rounded text-white placeholder-gray-400"
+            />
             <textarea
               name="motivo"
               placeholder="Motivo del baneo"
@@ -110,6 +119,7 @@ export default function Historias() {
                 <div key={hist.id} className="bg-gray-700 p-6 rounded-lg shadow-md">
                   <p className="text-gray-400">🚨 <strong>Motivo del baneo:</strong> {hist.motivo}</p>
                   <p className="text-gray-300 mt-2">📖 <strong>Lo que pasó:</strong> {hist.loQuePaso}</p>
+                  <p className="text-gray-300 mt-2">👤 <strong>Usuario:</strong> {hist.nombreUsuario}</p>
                 </div>
               ))
             )}
@@ -119,3 +129,4 @@ export default function Historias() {
     </div>
   );
 }
+
