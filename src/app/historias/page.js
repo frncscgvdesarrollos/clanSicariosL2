@@ -65,7 +65,7 @@ export default function Historias() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
+      <div className="min-h-screen fondo text-white flex items-center justify-center">
         <h2 className="text-2xl">Necesitas iniciar sesión para contar tu historia.</h2>
       </div>
     );

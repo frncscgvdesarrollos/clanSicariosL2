@@ -18,7 +18,7 @@ export default function RootPage() {
 
   if (user) {
     return (
-      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center space-y-6 p-4">
+      <div className="min-h-screen fondo text-white flex flex-col items-center justify-center space-y-6 p-4">
         <h1 className="text-5xl font-bold text-center">Bienvenido, {user.displayName}</h1>
         <p className="text-lg text-center">Gracias por unirte a la causa. Ayúdanos a documentar los baneos injustos.</p>
         <button 

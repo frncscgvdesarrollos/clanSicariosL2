@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body className="bg-gray-800 flex flex-col">
+      <body className="fondo flex flex-col">
         <AuthContextProvider>
           <Header />
           <main>{children}</main>
