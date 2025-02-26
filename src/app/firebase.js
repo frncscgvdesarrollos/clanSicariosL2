@@ -75,16 +75,7 @@ export const incrementarMeGusta = async (historiaId) => {
   }
 };
 
-// Función para obtener todas las historias de Firestore
-export async function getHistorias() {
-  try {
-    const querySnapshot = await getDocs(collection(db, "historias"));
-    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  } catch (error) {
-    console.error("Error al obtener historias:", error.message);
-    return [];
-  }
-}
+
 
 // Función para escuchar el estado de autenticación del usuario
 export function onAuthStateChangedListener(callback) {
